@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>曾曾宥欣 | 高中三年學習歷程彙整</title>
+    <style>
+        /* 莫蘭迪冷色系定義 */
+        :root {
+            --primary-color: #708090; /* 石板灰藍 */
+            --secondary-color: #B0C4DE; /* 淡鋼藍 */
+            --bg-color: #F8F9FA; /* 淺灰色 */
+            --text-color: #2F4F4F; /* 深石板灰 */
+            --white: #ffffff;
+        }
+
+        /* 新增：平滑捲動效果 */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* 導航欄 */
+        nav {
+            background-color: rgba(255, 255, 255, 0.95);
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            backdrop-filter: blur(5px); /* 毛玻璃效果，增加質感 */
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        /* 首頁 Banner 區塊 */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(112, 128, 144, 0.7), rgba(112, 128, 144, 0.7)), 
+                        url('https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=1500') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* 核心區塊通用樣式 */
+        .section {
+            padding: 100px 15%;
+            text-align: center;
+            scroll-margin-top: 70px; /* 防止捲動後標題被導航欄遮住 */
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 60px;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            width: 40px;
+            height: 3px;
+            background: var(--secondary-color);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* 自我簡歷區塊 */
+        .bio-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            text-align: left;
+            background: var(--white);
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        }
+
+        .bio-text h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .bio-text p {
+            margin-bottom: 10px;
+        }
+
+        /* 三欄式展示區塊 */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 45px 35px;
+            border-radius: 12px;
+            transition: all 0.4s ease;
+            border-bottom: 4px solid transparent;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary-color);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        /* 頁尾 */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .footer-content h3 {
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .footer-content p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+
+        /* 手機版優化 */
+        @media (max-width: 768px) {
+            .section { padding: 80px 5%; }
+            .hero h1 { font-size: 2.5rem; }
+            .bio-container { flex-direction: column; padding: 30px; }
+            nav ul { display: none; } /* 手機版隱藏選單簡化處理 */
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#home" class="logo">TSENG YU-HSIN</a>
+        <ul>
+            <li><a href="#home">首頁</a></li>
+            <li><a href="#about">個人簡歷</a></li>
+            <li><a href="#learning">學習成果</a></li>
+            <li><a href="#experience">多元表現</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1>曾曾宥欣</h1>
+        <p>私立大華高級中學 | 追求卓越，勇於探索的終身學習者</p>
+        <p style="margin-top: 20px; font-style: italic; opacity: 0.9;">「在自律中成長，於探索中跨域。」</p>
+    </section>
+
+    <section class="section" id="about">
+        <h2 class="section-title">個人簡歷</h2>
+        <div class="bio-container">
+            <div class="bio-text">
+                <h3>關於我</h3>
+                <p>我就讀於私立大華高級中學，在三年的高中生涯中，我不僅專注於學術課程的深耕，更積極參與各項跨領域活動。我擅長邏輯分析與團隊協作，對於解決複雜問題充滿熱忱。</p>
+                <br>
+                <p><b>就讀學校：</b>私立大華高級中學</p>
+                <p><b>核心能力：</b>批判性思考、數位溝通、專案管理</p>
+                <p><b>教育目標：</b>秉持大華「創造、勤誠、強健、輝煌」精神，致力於將知識轉化為實踐力。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="learning" style="background-color: #F0F2F5;">
+        <h2 class="section-title">課程學習成果</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>學科深耕</h3>
+                <p>收錄國英數社自等主科之學習歷程，展現紮實的理論基礎與課堂筆記整理能力。</p>
+            </div>
+            <div class="card">
+                <h3>自主學習</h3>
+                <p>針對特定專題進行 18 週的深度探索，包含研究計畫、進度追蹤與最終成果報告。</p>
+            </div>
+            <div class="card">
+                <h3>實驗實作</h3>
+                <p>科學實驗與探究實作紀錄，強調數據分析、邏輯歸納與問題解決的過程。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="experience">
+        <h2 class="section-title">多元表現</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>社團經歷</h3>
+                <p>擔任社團幹部，負責活動策劃與團隊協調，培養溝通領導力。</p>
+            </div>
+            <div class="card">
+                <h3>競賽獲獎</h3>
+                <p>校內外各項學科競賽與技能挑戰，展現抗壓性與競爭力。</p>
+            </div>
+            <div class="card">
+                <h3>服務學習</h3>
+                <p>參與志工活動與社會實踐，培養共感能力與社會責任感。</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <h3>曾曾宥欣的學習歷程入口</h3>
+            <p>聯繫信箱：980719grace@gmail.com</p>
+            <p>&copy; 2026 Tseng Yu-Hsin. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
